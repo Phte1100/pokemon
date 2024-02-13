@@ -6,13 +6,13 @@ window.onload = init;
 
 async function init() {
     try {
-
     // fetchanrop
     const response = await fetch(url);
     pokemon = await response.json();
+    console.table(pokemon);
+    displayPokemon(pokemon.results);
 
-    displayPokemon(pokemon);
-    console.log("hej");
+    
     
 } catch {
     // catch om något går fel
@@ -23,10 +23,10 @@ async function init() {
 function displayPokemon(pokemon) {
     const pokemonEl = document.getElementById("display");
     pokemonEl.innerHTML = ``;
-    pokemon.forEach((pokemon) => {
+    pokemon.forEach((results) => {
         pokemonEl.innerHTML += `
 
-            <h2>${pokemon.name}</h2>
+            <h2>${results.name}</h2>
             `;
         
     });
